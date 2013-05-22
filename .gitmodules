@@ -1,3 +1,0 @@
-[submodule "vendor/firepad"]
-	path = vendor/firepad
-	url = https://github.com/firebase/firepad.git
