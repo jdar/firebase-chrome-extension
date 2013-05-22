@@ -19,5 +19,12 @@
     "default_icon": "icons/icon19.png",
     "default_title": "browser action",
     "default_popup": "src/browser_action/browser_action.html"
-  }
+  },
+  "content_scripts": [
+    {
+      "run_at": "document_start",
+      "js": ["firepad_on_github.js"],
+      "matches": ["https://*.github.com/*/edit/*"]
+    }
+  ]
 }
