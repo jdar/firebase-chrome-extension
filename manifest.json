@@ -1,30 +1,22 @@
 {
-  "name": "Firebase Sample Extension",
-  "version": "0.0.1",
+  "name": "Firepad on Github",
+  "version": "0.0.2",
   "manifest_version": 2,
-  "description": "Firebase Sample extension.",
-  "homepage_url": "https://github.com/firebase/firebase-chrome-extension",
-  /* This sample uses firebaseio-demo.com but for production apps using a firebaseio.com Firebase, you won't need that. */
-  "content_security_policy": "script-src 'self' https://cdn.firebase.com https://*.firebaseio.com https://*.firebaseio-demo.com; object-src 'self'",
+  "description": "Add collaborative editing directly on Github.",
+  "homepage_url": "https://github.com/jdar/firepad-on-github",
+  "content_security_policy": "script-src 'self' https://cdn.firebase.com https://*.firebaseio.com; object-src 'self'",
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
   },
-  "background": {
-    "page": "src/bg/background.html",
-    "persistent": true
-  },
-  "browser_action": {
-    "default_icon": "icons/icon19.png",
-    "default_title": "browser action",
-    "default_popup": "src/browser_action/browser_action.html"
-  },
   "content_scripts": [
     {
       "run_at": "document_start",
-      "js": ["firepad_on_github.js"],
+      "js": ["vendor/firebase.js", "vendor/firepad/firepad.js", "firepad_on_github.js"],
+      "css": ["vendor/codemirror/codemirror.css","vendor/firepad/firepad.css"],
       "matches": ["https://*.github.com/*/edit/*"]
     }
-  ]
+  ],
+  "web_accessible_resources": ["vendor/codemirror/codemirror.js"]
 }
